@@ -6,8 +6,9 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLElement> {}
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, children, disabled, type = "button", ...props }, ref) => {
     return (
-      <button 
-      className={cn(`
+      <button
+        className={cn(
+          `
         w-auto
         rounded-full
         bg-black
@@ -20,8 +21,12 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         font-semibold
         hover:opacity-75
         transition
-      `, className)} 
-      ref={ref}>
+      `,
+          className
+        )}
+        ref={ref}
+        {...props}
+      >
         {children}
       </button>
     );
