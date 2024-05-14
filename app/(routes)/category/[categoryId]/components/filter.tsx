@@ -12,6 +12,7 @@ interface FilterProps {
   valueKey: string;
 }
 const Filter: React.FC<FilterProps> = ({ data, name, valueKey }) => {
+
   const searchParams = useSearchParams();
   const router = useRouter();
 
@@ -19,7 +20,7 @@ const Filter: React.FC<FilterProps> = ({ data, name, valueKey }) => {
   const selectedValue = searchParams.get(valueKey);
 
   const onClick = (id: string) => {
-    // current url
+    // current query
     const current = queryString.parse(searchParams.toString());
 
     // add the new filter to the current url
@@ -32,7 +33,7 @@ const Filter: React.FC<FilterProps> = ({ data, name, valueKey }) => {
     if (current[valueKey] === id) {
       query[valueKey] = null;
     }
-
+// create new URL
     const url = queryString.stringifyUrl(
       {
         url: window.location.href,
